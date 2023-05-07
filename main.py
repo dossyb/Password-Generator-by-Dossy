@@ -6,15 +6,21 @@ wordlist = open("wordlist.txt", "r").read().split('\n')
 
 
 def generate_password(num_amount, add_symbol):
-    word1 = random.choice(wordlist).capitalize()
-    word2 = random.choice(wordlist).capitalize()
+    words = ["", ""]
+    password = ""
+    for word in words:
+        while len(word) < 5 or len(word) > 7:
+            word = random.choice(wordlist).capitalize()
+        password += word
+
     number = generate_numbers(num_amount)
+    password += number
     if add_symbol == "Y":
         symbol = random.choice(symbol_list)
     else:
         symbol = ""
 
-    password = word1 + word2 + number + symbol
+    password += symbol
     return password
 
 def generate_numbers(num_amount):
